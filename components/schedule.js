@@ -41,7 +41,6 @@ export default function Schedule() {
     }, [currentTime]);
 
     const isHour = (hour) => {
-        
         return formattedTime === (hour.Hour);
     }
 
@@ -82,7 +81,8 @@ export default function Schedule() {
                                     style={styles.taskEntry}
                                     multiline={true}
                                     onFocus={handleFocus}
-                                    placeholder='Free Space'/>
+                                    placeholder='Free Space'
+                                    />
                             </View>
                         </GestureHandlerRootView>
                     );
@@ -138,6 +138,6 @@ const styles = StyleSheet.create({
     taskEntry: {
         flexDirection: 'row',
         paddingLeft: 10,
-        width: Dimensions.get('window').width
+        width: Dimensions.get('window').width*1.1
     },
 });

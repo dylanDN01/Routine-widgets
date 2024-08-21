@@ -1,8 +1,9 @@
 import React from 'react'
-import { StyleSheet, Text, View, StatusBar, Dimensions} from "react-native";
+import { StyleSheet, Text, View, StatusBar, Dimensions, KeyboardAvoidingView} from "react-native";
 
 import LocalTime from '../components/time';
 import Schedule from '../components/schedule';
+import DaySelect from '../components/daySelect';
 
 const screenWidth = Dimensions.get('window').width
 const screenHeight = Dimensions.get('window').height
@@ -10,8 +11,9 @@ const screenHeight = Dimensions.get('window').height
 export default function Index() {
 
 
+
   return (
-    <View style = {styles.container}>
+    <KeyboardAvoidingView style = {styles.container}>
       <StatusBar hidden/>
 
       <View  style = {styles.dateTime}><LocalTime/></View>
@@ -26,17 +28,28 @@ export default function Index() {
         <Schedule/>
       </View>
 
-    </View>
+      <KeyboardAvoidingView style = {styles.daySelector}>
+        <DaySelect/>
+      </KeyboardAvoidingView>
+
+    </KeyboardAvoidingView>
   );
 }
 
 
 const styles = StyleSheet.create({
+  daySelector: {
+    position: 'absolute',
+    bottom: 0,
+    marginLeft: '3%',
+    marginBottom: '8%'
+  },
   container: {
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
     backgroundColor: 'skyblue',
-    flex: 1
+    flex: 1,
+    
   },
   message: {
     position: 'absolute',
@@ -54,13 +67,8 @@ const styles = StyleSheet.create({
   },
   schedule: {
     position: 'absolute',
-    display: 'flex',
-    flexDirection: 'column',
-    alignSelf: 'flex-start',
     justifyContent: 'center',
     marginLeft: '3%',
     transform: [{scale: 0.75}],
-    flex: 1,
-
   }
 });
