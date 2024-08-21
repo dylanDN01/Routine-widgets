@@ -1,10 +1,15 @@
 import React from 'react'
-import { StyleSheet, Text, View, StatusBar} from "react-native";
+import { StyleSheet, Text, View, StatusBar, Dimensions} from "react-native";
 
 import LocalTime from '../components/time';
 import Schedule from '../components/schedule';
 
+const screenWidth = Dimensions.get('window').width
+const screenHeight = Dimensions.get('window').height
+
 export default function Index() {
+
+
   return (
     <View style = {styles.container}>
       <StatusBar hidden/>
@@ -35,7 +40,7 @@ const styles = StyleSheet.create({
   },
   message: {
     position: 'absolute',
-    top: 40,
+    top: screenHeight * 0.04,
     right: 40,
     alignItems: 'flex-end'
   },
@@ -54,6 +59,8 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     justifyContent: 'center',
     marginLeft: '3%',
-    backgroundColor: 'grey'
+    transform: [{scale: 0.75}],
+    flex: 1,
+
   }
 });
